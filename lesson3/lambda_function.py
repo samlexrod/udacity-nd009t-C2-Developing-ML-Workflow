@@ -1,11 +1,14 @@
-
-# This cell will write the function to your local machine. Note the name of the file and the name of the function. 
-# Compare this to the 'Handler' parameter. 
-
-import json
-
 def lambda_handler(event, context):
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
+        # The code to parse S3 event has provided to you, you only need to call the `preprocess` from the HelloBlazePreprocessLambda.py and return the status.
+        import json
+        import urllib
+        
+        for r in event['Records']:
+                bucket = r['s3']['bucket']['name']
+                key = urllib.parse.unquote_plus(r['s3']['object']['key'], encoding='utf-8')
+                uri = "/".join([bucket, key])
+        
+        return {
+                'statusCode': 200,
+                'body': json.dumps('Hello from Lambda!')
+        }
