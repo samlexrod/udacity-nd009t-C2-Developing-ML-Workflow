@@ -71,7 +71,7 @@ def write_data(data, train_path, test_path, proportion):
         index += 1
 
 if __name__ == "__main__":
-    unzipped_path = unzip_data('/opt/ml/processing/input/reviews_Musical_Instruments_5.json.zip')
+    unzipped_path = unzip_data('/opt/ml/processing/input/Toys_and_Games_5.json.zip')
     labeled_data = label_data(unzipped_path)
     new_split_sentence_data = split_sentences(labeled_data)
-    write_data(new_split_sentence_data, '/opt/ml/processing/output/train/hello_blaze_train_scikit', '/opt/ml/processing/output/test/hello_blaze_test_scikit', .9)
+    write_data(new_split_sentence_data, '/opt/ml/processing/output/train/Toys_and_Games_5.json.zip_train', '/opt/ml/processing/output/test/Toys_and_Games_5.json.zip_test', .9)
