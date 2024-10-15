@@ -1,14 +1,21 @@
 def lambda_handler(event, context):
-        # The code to parse S3 event has provided to you, you only need to call the `preprocess` from the HelloBlazePreprocessLambda.py and return the status.
-        import json
-        import urllib
-        
-        for r in event['Records']:
-                bucket = r['s3']['bucket']['name']
-                key = urllib.parse.unquote_plus(r['s3']['object']['key'], encoding='utf-8')
-                uri = "/".join([bucket, key])
-        
-        return {
-                'statusCode': 200,
-                'body': json.dumps('Hello from Lambda!')
-        }
+ 
+    # Connecto to service
+    client = boto3.client("stepfunctions")
+
+    definition = event["definition"]
+
+    # Update existing state machine
+    state_machine_arn = "arn:aws:states:us-east-1:002427974286:execution:workflow-stepfunction-processing:fa6701a7-ba4f-4420-b0f1-094055bb7d5e"
+    client.update_state_machine(definition=definition, stateMachineArn=state_machine_arn) 
+    
+    # Give AWS time to register the defintion
+    time.sleep(5)
+    
+    #todo
+    client.start_execution(input='{}', name='LambdaExecution', stateMachineArn=state_machine_arn) 
+    
+    return {
+        'statusCode': 200,
+        'body': 'The step function has successfully launched!'
+    }
