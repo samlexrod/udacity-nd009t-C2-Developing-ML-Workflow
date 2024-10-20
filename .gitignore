@@ -1,3 +1,13 @@
 # Ignore all files in the /cache/ directory
 /cache/
 **/data/
+
+# Ignore all files in /test/ and /train/ directories
+**/test/
+**/train/
+
+# Ignore all files in the folder that start with cifar
+**/cifar*
+
+# Ignore all .png files
+**/*.png
