@@ -11,3 +11,13 @@
 
 # Ignore all .png files
 **/*.png
+
+# Ignore all files in /python/ directory
+**/python/
+
+# Ingore all files in /lambda-env/ directory
+**/lambda-env/
+.DS_Store
+
+# Ignore .zip files
+**/*.zip
