@@ -13,7 +13,7 @@ source lambda-env/bin/activate
 pip install --upgrade pip
 
 # Install the SageMaker SDK without dependencies
-pip install sagemaker -t sagemaker_pkg/
+pip install -q sagemaker -t sagemaker_pkg/
 find sagemaker_pkg/ -name "*.dist-info" -type d -exec rm -r {} +
 find sagemaker_pkg/ -name "tests" -type d -exec rm -r {} +
 
