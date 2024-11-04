@@ -21,3 +21,9 @@
 
 # Ignore .zip files
 **/*.zip
+
+# Ignore .checkpoint
+**/*.ipynb_checkpoints
+
+# Ignore capture_data
+**/captured_data/
