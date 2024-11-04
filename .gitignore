@@ -10,7 +10,7 @@
 **/cifar*
 
 # Ignore all .png files
-**/*.png
+**/raw_images/*.png
 
 # Ignore all files in /python/ directory
 **/python/
